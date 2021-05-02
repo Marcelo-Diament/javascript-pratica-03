@@ -79,6 +79,10 @@
   margin: 24px auto;
   mix-blend-mode: color-dodge;
   width: 240px;
+  mask-image: url('../images/github-logo.png');
+  mask-size: 240px;
+  mask-repeat: no-repeat;
+  mask-position: center;
   -webkit-mask-image: url('../images/github-logo.png');
   -webkit-mask-size: 240px;
   -webkit-mask-repeat: no-repeat;
@@ -86,6 +90,7 @@
 }
 
 .portfolio__link a {
+  background-clip: text;
   background-image: url('../images/texture.png');
   background-size: 73%;
   background-position: -13%;
