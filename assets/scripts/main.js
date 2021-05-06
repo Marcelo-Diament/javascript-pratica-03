@@ -70,7 +70,7 @@ window.onload = () => {
       placeholder: '1123456789',
       required: true
     }, 'Telefone')
-    const seletOpportunityType = elementCreator('select', {
+    const selectOpportunityType = elementCreator('select', {
       name: 'tipo',
       id: 'tipo',
       required: true
@@ -137,9 +137,89 @@ window.onload = () => {
     const submitButton = elementCreator('button', {
       type: 'submit'
     }, 'Enviar')
+    form.appendChild(inputName)
+    form.appendChild(inputCompany)
+    form.appendChild(selectOpportunityType)
+    form.appendChild(inputEmail)
+    form.appendChild(inputPhone)
+    form.appendChild(inputZipcode)
+    form.appendChild(inputState)
+    form.appendChild(inputCity)
+    form.appendChild(inputNeighborhood)
+    form.appendChild(inputStreet)
+    form.appendChild(inputNumber)
+    form.appendChild(inputComp)
+    form.appendChild(textArea)
+    form.appendChild(submitButton)
+    return form
   }
 
+  // makeContactForm - implementar o formulário de contato
+  const makeContactForm = () => {
+    const contactSection = document.querySelector('.section.contact')
+    const form = createContactForm()
+    contactSection.appendChild(form)
+  }
 
+  // addContactFormStyle - adicionando estilo ao nosso form
+  const addContactFormStyle = () => {
+    const style = `
+      form {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+      }
+      .input-container,
+      .input-container ~ button {
+        align-items: stretch;
+        display: flex;
+        flex: 1 1 40%;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+      }
+      .input-container:nth-child(odd) {
+        margin-right: 8px;
+      }
+      .input-container:nth-child(even) {
+        margin-left: 8px;
+      }
+      .input-container:last-of-type {
+        flex: 1 0 100% !important;
+      }
+    `
+    const styleTag = document.createElement('style')
+    styleTag.innerHTML = style
+    head.appendChild(styleTag)
+  }
+
+  // updateInputStyle - atualiza o estilo dos inputs
+  const updateInputStyle = () => {
+    const inputs = document.querySelectorAll('input')
+    for (let input of inputs) {
+      input.style = 'border: 1px solid black;border-radius:16px;height:32px;outline:none;padding:4px 8px;'
+      input.classList.add('mb16', 'mt8')
+    }
+  }
+
+  // updateSelectTag - atualiza o estilo do select
+  const updateSelectTag = () => {
+    const selects = document.querySelectorAll('select')
+    for (let select of selects) {
+      select.style = 'border: 1px solid black;border-radius:16px;height:32px;outline:none;padding:4px 8px;'
+      select.classList.add('mb16', 'mt8')
+    }
+  }
+
+  // updateSubmitButtonStyle
+  const updateSubmitButtonStyle = () => {
+    const button = document.querySelector('button[type="submit"]')
+    const normalStyle = 'border: 1px solid white;background-color:var(--secondary-color);border-radius:16px;color:#fff;font-weight:bold;height:32px;margin: 24px auto 8px;outline:none;padding:8px;'
+    const hoverStyle = 'border: 1px solid black;background-color:var(--tertiary-color);border-radius:16px;color:#000;font-weight:bold;height:32px;margin: 24px auto 8px;outline:none;padding:8px;cursor:pointer;'
+    button.style = normalStyle
+    button.onmouseover = () => { button.style = hoverStyle }
+    button.onmouseout = () => { button.style = normalStyle }
+  }
 
 
 
