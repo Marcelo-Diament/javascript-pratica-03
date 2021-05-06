@@ -221,6 +221,18 @@ window.onload = () => {
     button.onmouseout = () => { button.style = normalStyle }
   }
 
+  // updatePortfolioLogo
+  const updatePortfolioLogo = () => {
+    const portfolio = document.querySelector('.portfolio__link__container')
+    return portfolio.style.backgroundAttachment = 'fixed'
+  }
 
+
+
+
+
+
+
+  
 
 }
