@@ -233,6 +233,15 @@ window.onload = () => {
 
 
 
-  
+  const init = () => {
+    makeContactForm()
+    addContactFormStyle()
+    updateInputStyle()
+    updateSelectTag()
+    updateSubmitButtonStyle()
+    updatePortfolioLogo()
+  }
+
+  init()
 
 }
