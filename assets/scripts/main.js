@@ -256,11 +256,43 @@ window.onload = () => {
     cep.addEventListener('blur', e => getZipCopde(e.target.value))
   }
 
-
+  const menuColorOnScreenScroll = () => {
+    window.onscroll = () => {
+      const headerStyle = document.querySelector('header').style
+      const dobra = () => Math.round(window.pageYOffset / window.innerHeight)
+      switch (true) {
+        case dobra() === 0:
+          headerStyle.backgroundColor = '#224081'
+          headerStyle.color = '#fff'
+          document.querySelectorAll('header img').forEach(img => img.style.filter = 'invert(1)')
+          break;
+        case dobra() === 1:
+          headerStyle.backgroundColor = '#f12278'
+          headerStyle.color = '#fff'
+          document.querySelectorAll('header img').forEach(img => img.style.filter = 'invert(1)')
+          break;
+        case dobra() === 2:
+          headerStyle.backgroundColor = '#2294f1'
+          headerStyle.color = '#fff'
+          document.querySelectorAll('header img').forEach(img => img.style.filter = 'invert(1)')
+          break;
+        case dobra() === 3:
+          headerStyle.backgroundColor = '#f1ba22'
+          headerStyle.color = '#000'
+          document.querySelectorAll('header img').forEach(img => img.style.filter = 'invert(0)')
+          break;
+        default:
+          headerStyle.backgrounColor = '#224081'
+          headerStyle.color = '#fff'
+          document.querySelectorAll('header img').forEach(img => img.style.filter = 'invert(1)')
+      }
+    }
+  }
 
 
 
   const init = () => {
+    menuColorOnScreenScroll()
     makeContactForm()
     addContactFormStyle()
     updateInputStyle()
