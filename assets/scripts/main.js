@@ -289,9 +289,37 @@ window.onload = () => {
     }
   }
 
-
+  const showWhatsIconOnMobile = () => {
+    if (window.innerWidth < 680) {
+      const whatsIconLink = document.createElement('a')
+      const linkAttributes = {
+        href: 'https://wa.me/+5511976052723?text=Ol%C3%A1%20Marcelo%20Diament%2C%0A%0AEncontramos%20seu%20perfil%20e%20gostar%C3%ADamos%20de%20conversar%20sobre%20uma%20oportunidade%20para%20Desenvolvedor%20Front%20End%20JR.%0A%0AQuando%20podemos%20conversar%3F%0A%0AMeu%20email%20%C3%A9%20MEU%20EMAIL%20e%20meu%20telefone%20%C3%A9%20MEU%20TELEFONE.%0A%0AAguardamos%20seu%20retorno%20e%20desejamos%20boa%20sorte!%0A%0AAtenciosamente%2C%0A%0AMEU%20NOME%2C%20NOME%20DA%20MINHA%20EMPRESA',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        class: 'links__whats',
+        title: 'Enviar mensagem por Whatsapp',
+        style: 'bottom:24px;left:24px;position:fixed;z-index:3;'
+      }
+      for (let linkAttr in linkAttributes) {
+        whatsIconLink.setAttribute(linkAttr, linkAttributes[linkAttr])
+      }
+      const whatsIcon = document.createElement('img')
+      const imgAttributes = {
+        src: './assets/images/whatsapp-icon.png',
+        alt: 'Envie uma imagem agora mesmo!',
+        height: '80',
+        width: 'auto'
+      }
+      for (let imgAttr in imgAttributes) {
+        whatsIcon.setAttribute(imgAttr, imgAttributes[imgAttr])
+      }
+      whatsIconLink.appendChild(whatsIcon)
+      body.appendChild(whatsIconLink)
+    }
+  }
 
   const init = () => {
+    showWhatsIconOnMobile()
     menuColorOnScreenScroll()
     makeContactForm()
     addContactFormStyle()
