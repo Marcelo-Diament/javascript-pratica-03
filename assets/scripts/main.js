@@ -227,7 +227,34 @@ window.onload = () => {
     return portfolio.style.backgroundAttachment = 'fixed'
   }
 
+  // getZipCopde
+  const getZipCopde = zipCode => {
+    const uf = document.querySelector('#uf'),
+      cidade = document.querySelector('#cidade'),
+      bairro = document.querySelector('#bairro'),
+      rua = document.querySelector('#rua')
+    const populateAddress = (ufValue, cidadeValue, bairroValue, ruaValue) => {
+      uf.value = ufValue
+      cidade.value = cidadeValue
+      bairro.value = bairroValue
+      rua.value = ruaValue
+    }
+    populateAddress('...', '...', '...', '...')
+    fetch(`https://viacep.com.br/ws/${zipCode}/json/`)
+      .then(res => res.json())
+      .then(json => {
+        console.groupCollapsed('ENDEREÇO CAPTURADO')
+        console.log(json)
+        console.groupEnd()
+        const { uf, localidade, bairro, logradouro } = json
+        return populateAddress(uf, localidade, bairro, logradouro)
+      })
+  }
 
+  const zipCodeEvent = () => {
+    const cep = document.querySelector('#cep')
+    cep.addEventListener('blur', e => getZipCopde(e.target.value))
+  }
 
 
 
@@ -240,6 +267,7 @@ window.onload = () => {
     updateSelectTag()
     updateSubmitButtonStyle()
     updatePortfolioLogo()
+    zipCodeEvent()
   }
 
   init()
